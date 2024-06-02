@@ -1,6 +1,12 @@
 import ItemCard from '@/components/item-card';
 import type { ItemType } from '@/data';
-import { allItems } from '@/data';
+import { allItems, itemTypes } from '@/data';
+
+export async function generateStaticParams() {
+  return itemTypes.map((id) => ({
+    id,
+  }));
+}
 
 export default function Page({ params: { id } }: { params: { id: ItemType } }) {
   const currentItems = allItems[id] || [];
