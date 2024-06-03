@@ -1,10 +1,10 @@
-import Footer from '@/components/footer';
-import Header from '@/components/header';
 import SideBar from '@/components/side-bar';
 import { ThemeProvider } from '@/components/theme-provider';
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
+import Footer from './components/footer';
+import Header from './components/header';
 import './globals.css';
 
 const inter = Noto_Sans_JP({ subsets: ['latin'] });
