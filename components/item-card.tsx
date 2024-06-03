@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function ItemCard({ title, tags, href, imageUrl }: Item) {
-  const { getTagLabel } = useTagParams();
+  const { getTagLabel, addTagToSearchParams } = useTagParams();
 
   return (
     <div className="relative aspect-video rounded-md border bg-card p-4 shadow-sm transition duration-500 hover:shadow-lg">
@@ -21,8 +21,8 @@ export default function ItemCard({ title, tags, href, imageUrl }: Item) {
         {tags.map((tagId) => (
           <Link
             key={tagId}
-            href={tagId}
-            className="relative z-10 whitespace-nowrap rounded border bg-muted px-1.5 py-1 text-xs text-muted-foreground "
+            href={`/?tags=${addTagToSearchParams(tagId, true)}`}
+            className="relative z-10 whitespace-nowrap rounded border bg-muted px-1.5 py-1 text-xs text-muted-foreground"
           >
             {getTagLabel(tagId)}
           </Link>

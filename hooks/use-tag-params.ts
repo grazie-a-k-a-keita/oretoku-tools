@@ -1,7 +1,7 @@
 'use client';
 
 import type { TagId } from '@/data/tag';
-import { allTags, mainTags } from '@/data/tag';
+import { allTags } from '@/data/tag';
 import { useSearchParams } from 'next/navigation';
 
 export const useTagParams = () => {
@@ -12,7 +12,7 @@ export const useTagParams = () => {
   };
 
   const addTagToSearchParams = (tag: TagId, keepMainTag?: boolean) => {
-    const src = keepMainTag ? tags : tags.filter((t: TagId) => !mainTags.includes(t));
+    const src = keepMainTag ? tags : [];
 
     if (src.includes(tag)) {
       return src.join(',');
@@ -21,9 +21,5 @@ export const useTagParams = () => {
     }
   };
 
-  const removeTagToSearchParams = (tag: TagId) => {
-    return tags.filter((t: TagId) => t !== tag).join(',');
-  };
-
-  return { tags, addTagToSearchParams, removeTagToSearchParams, getTagLabel };
+  return { tags, addTagToSearchParams, getTagLabel };
 };

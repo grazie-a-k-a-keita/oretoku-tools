@@ -8,7 +8,7 @@ import { Menu } from 'lucide-react';
 import Link from 'next/link';
 
 export default function MobileNav() {
-  const { getTagLabel } = useTagParams();
+  const { getTagLabel, addTagToSearchParams } = useTagParams();
 
   return (
     <Sheet>
@@ -21,7 +21,7 @@ export default function MobileNav() {
         <div className="flex flex-col">
           {mainTags.map((tagId) => (
             <Button key={tagId} variant="ghost" className="justify-start" asChild>
-              <Link href={`/${tagId}`}>{getTagLabel(tagId)}</Link>
+              <Link href={`/?tags=${addTagToSearchParams(tagId)}`}>{getTagLabel(tagId)}</Link>
             </Button>
           ))}
         </div>

@@ -1,3 +1,4 @@
+import { AppConfig } from '@/app.config';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Suspense } from 'react';
@@ -13,7 +14,7 @@ export default function Header() {
           </Suspense>
         </div>
         <Button asChild variant="ghost" className="gap-2 text-lg font-black">
-          <Link href="/">OretokuTools</Link>
+          <Link href="/">{AppConfig.title}</Link>
         </Button>
       </div>
     </header>
