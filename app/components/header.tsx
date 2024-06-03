@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { Suspense } from 'react';
 import MobileNav from './mobile-nav';
 
 export default function Header() {
@@ -7,7 +8,9 @@ export default function Header() {
     <header className="border-b">
       <div className="container flex h-16 items-center gap-4">
         <div className="lg:hidden">
-          <MobileNav />
+          <Suspense>
+            <MobileNav />
+          </Suspense>
         </div>
         <Button asChild variant="ghost" className="gap-2 text-lg font-black">
           <Link href="/">OretokuTools</Link>
