@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import MobileNav from '../../components/mobile-nav';
+import MobileNav from './mobile-nav';
 
 export default function Header() {
   return (

@@ -1,9 +1,9 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
 import { mainTags } from '@/data/tag';
 import { useTagParams } from '@/hooks/use-tag-params';
 import Link from 'next/link';
-import { Button } from './ui/button';
 
 export default function SideBar() {
   const { addTagToSearchParams, getTagLabel } = useTagParams();
