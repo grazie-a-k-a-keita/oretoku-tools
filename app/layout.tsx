@@ -22,15 +22,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" suppressHydrationWarning>
+    <html lang='ja' suppressHydrationWarning>
       <body className={cn(inter.className, 'h-dvh flex flex-col')} suppressHydrationWarning>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
           <Header />
-          <main className="flex flex-1">
+          <main className='flex flex-1'>
             <Suspense>
               <SideBar />
             </Suspense>
-            <div className="flex-1 bg-muted/30">
+            <div className='flex-1 bg-muted/30'>
               <Suspense>{children}</Suspense>
             </div>
           </main>

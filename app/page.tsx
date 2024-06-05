@@ -15,11 +15,11 @@ export default function Page() {
   });
 
   if (currentItems.length === 0) {
-    return <p className="m-10 text-center text-base text-muted-foreground">Not found</p>;
+    return <p className='m-10 text-center text-base text-muted-foreground'>Not found</p>;
   }
 
   return (
-    <div className="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 lg:grid-cols-3">
+    <div className='grid grid-cols-1 gap-4 p-4 md:grid-cols-2 lg:grid-cols-3'>
       {currentItems.map((item) => (
         <ItemCard key={item.title} {...item} />
       ))}
