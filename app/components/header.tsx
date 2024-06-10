@@ -13,9 +13,9 @@ export default function Header() {
             <MobileNav />
           </Suspense>
         </div>
-        <Button asChild variant='ghost' className='text-lg font-black'>
+        <Button asChild variant='ghost' className='text-lg font-black hover:opacity-90'>
           <Link href='/'>
-            <Image src='/oretoku-tools.svg' alt='logo' className='dark:invert' width={150} height={26} priority />
+            <Image src='/oretoku-tools.svg' alt='logo' className=' dark:invert' width={150} height={26} priority />
           </Link>
         </Button>
       </div>
