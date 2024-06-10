@@ -7,8 +7,8 @@ export default function ItemCard({ title, tags, href, imageUrl }: Item) {
   const { getTagLabel, addTagToSearchParams } = useTagParams();
 
   return (
-    <div className='relative aspect-video rounded-md border bg-card p-4 shadow-sm transition duration-500 hover:shadow-lg'>
-      <div className='relative mb-2 aspect-video overflow-hidden rounded border'>
+    <div className='relative rounded-lg border bg-card p-4 shadow-sm transition duration-500 hover:shadow-lg'>
+      <div className='relative mb-2 aspect-video overflow-hidden rounded-md border'>
         <Image fill className='object-cover' src={imageUrl} alt='' priority />
       </div>
       <h2 className='text-sm font-semibold'>
