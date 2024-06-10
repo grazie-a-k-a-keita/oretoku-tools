@@ -1,7 +1,7 @@
 export const allTags = [
-  { id: 'illustration', label: 'illustration' },
-  { id: 'image', label: 'image' },
-  { id: 'icon', label: 'icon' },
+  { id: 'illustration', label: 'Illustration' },
+  { id: 'image', label: 'Image' },
+  { id: 'icon', label: 'Icon' },
 ] as const;
 
 export type TagId = (typeof allTags)[number]['id'];

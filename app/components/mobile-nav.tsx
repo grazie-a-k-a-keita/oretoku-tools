@@ -19,7 +19,7 @@ export default function MobileNav() {
           <Menu size={20} />
         </Button>
       </SheetTrigger>
-      <SheetContent side='left'>
+      <SheetContent side='right'>
         <div className='flex'>
           <Image
             src='/oretoku-tools.svg'
