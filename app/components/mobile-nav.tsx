@@ -24,7 +24,7 @@ export default function MobileNav() {
             <Button
               key={tagId}
               variant='ghost'
-              className={cn('justify-start', tags?.includes(tagId) && 'bg-accent')}
+              className={cn('justify-start', tags[0] === tagId && 'bg-accent')}
               asChild
             >
               <Link href={`/?tags=${addTagToSearchParams(tagId)}`}>{getTagLabel(tagId)}</Link>

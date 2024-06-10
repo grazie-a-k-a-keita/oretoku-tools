@@ -24,6 +24,7 @@ export default function ItemCard({ title, tags, href, imageUrl }: Item) {
             href={`/?tags=${addTagToSearchParams(tagId, true)}`}
             className='relative z-10 whitespace-nowrap rounded border bg-muted px-1.5 py-1 text-xs text-muted-foreground'
           >
+            <span className='mr-1 inline-block rounded bg-muted-foreground/10 p-0.5 px-1 leading-none'>#</span>
             {getTagLabel(tagId)}
           </Link>
         ))}

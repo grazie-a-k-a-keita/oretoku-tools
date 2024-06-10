@@ -1,4 +1,3 @@
-import { AppConfig } from '@/app.config';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,10 +13,9 @@ export default function Header() {
             <MobileNav />
           </Suspense>
         </div>
-        <Button asChild variant='ghost' className='gap-2 text-lg font-black'>
+        <Button asChild variant='ghost' className='text-lg font-black'>
           <Link href='/'>
-            <Image src='/oretoku-tools.svg' alt='logo' className='dark:invert' width={20} height={20} priority />
-            {AppConfig.title}
+            <Image src='/oretoku-tools.svg' alt='logo' className='dark:invert' width={150} height={26} priority />
           </Link>
         </Button>
       </div>

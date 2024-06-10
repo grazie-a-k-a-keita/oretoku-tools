@@ -13,12 +13,7 @@ export default function SideBar() {
     <div className='hidden w-64 border-r lg:block'>
       <div className='flex flex-col p-4'>
         {mainTags.map((tagId) => (
-          <Button
-            key={tagId}
-            variant='ghost'
-            className={cn('justify-start', tags?.includes(tagId) && 'bg-accent')}
-            asChild
-          >
+          <Button key={tagId} variant='ghost' className={cn('justify-start', tags[0] === tagId && 'bg-accent')} asChild>
             <Link href={`/?tags=${addTagToSearchParams(tagId)}`}>{getTagLabel(tagId)}</Link>
           </Button>
         ))}
