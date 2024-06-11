@@ -2,24 +2,28 @@ import type { Item } from '@/types/item';
 
 export const allItems: Item[] = [
   {
-    title: 'Illustration1',
-    href: 'https://www.irasutoya.com/',
-    imageUrl:
-      'https://warnerbros.co.jp/franchise/wizardingworld/assets/img/special/characters/cedric-diggory/img_top.jpg',
-    tags: ['illustration', 'icon', 'image'],
+    id: 'lucide',
+    title: 'Lucide',
+    description: 'Beautiful & consistent icon toolkit made by the community.',
+    href: 'https://lucide.dev/',
+    badge: 'New',
+    tags: ['icon'],
   },
   {
-    title: 'Illustration2',
-    href: 'https://www.irasutoya.com/',
-    imageUrl:
-      'https://warnerbros.co.jp/franchise/wizardingworld/assets/img/special/characters/cedric-diggory/img_top.jpg',
-    tags: ['image'],
+    id: 'simple-icons',
+    title: 'Simple Icons',
+    description: '3180 Free SVG icons for popular brands',
+    href: 'https://simpleicons.org/',
+    badge: 'New',
+    tags: ['icon'],
   },
   {
-    title: 'Illustration3',
-    href: 'https://www.irasutoya.com/',
-    imageUrl:
-      'https://warnerbros.co.jp/franchise/wizardingworld/assets/img/special/characters/cedric-diggory/img_top.jpg',
+    id: 'feather',
+    title: 'Feather',
+    description:
+      'Feather is a collection of simply beautiful open source icons. Each icon is designed on a 24x24 grid with an emphasis on simplicity, consistency and readability.',
+    href: 'https://feathericons.com/',
+    badge: 'New',
     tags: ['icon'],
   },
 ] as const;
