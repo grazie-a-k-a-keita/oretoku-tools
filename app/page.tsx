@@ -19,7 +19,7 @@ export default function Page() {
   }
 
   return (
-    <div className='grid flex-1 grid-cols-1 gap-4 p-4 md:grid-cols-2 lg:grid-cols-3'>
+    <div className='grid flex-1 grid-cols-1 gap-4 p-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
       {currentItems.map((item) => (
         <ItemCard key={item.title} {...item} />
       ))}
