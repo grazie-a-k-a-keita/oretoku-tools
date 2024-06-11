@@ -9,7 +9,7 @@ export default function ItemCard({ id, title, description, href, badge, tags }: 
 
   return (
     <div className='relative rounded-lg border bg-card p-4 shadow-sm transition duration-500 hover:shadow-lg'>
-      <div className='min-h-56 rounded-lg border bg-muted/10 p-4'>
+      <div className='min-h-60 rounded-lg border bg-muted/10 p-4'>
         <div className='flex justify-between'>
           <div className='relative mb-3 aspect-square w-1/4 overflow-hidden rounded-md'>
             <Image fill className='object-cover' src={`/images/${id}.png`} alt='' priority />
@@ -18,13 +18,13 @@ export default function ItemCard({ id, title, description, href, badge, tags }: 
             <Badge variant='secondary'>{badge}</Badge>
           </div>
         </div>
-        <h2 className='text-base font-semibold'>
+        <h2 className='font-semibold'>
           <Link href={href} target='_blank'>
             {title}
             <span className='absolute inset-0'></span>
           </Link>
         </h2>
-        <h3 className='py-2 text-sm font-medium'>{description}</h3>
+        <p className='line-clamp-2 pt-2 text-sm font-medium'>{description}</p>
       </div>
       <div className='mt-4 flex flex-wrap gap-2'>
         {tags.map((tagId) => (

@@ -6,4 +6,4 @@ export const allTags = [
 
 export type TagId = (typeof allTags)[number]['id'];
 
-export const mainTags: TagId[] = ['illustration', 'image', 'icon'];
+export const mainTags: TagId[] = ['icon'];
