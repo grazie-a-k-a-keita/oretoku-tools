@@ -26,4 +26,38 @@ export const allItems: Item[] = [
     badge: 'New',
     tags: ['icon'],
   },
+  {
+    id: 'o-dan',
+    title: 'O-DAN',
+    description: 'O-DAN is a cross-search service for high-quality free stock photo sites.',
+    href: 'https://o-dan.net/ja/',
+    badge: 'New',
+    tags: ['image'],
+  },
+  {
+    id: 'pinterest',
+    title: 'Pinterest',
+    description: 'レシピやインテリア、ファッションコーデなど試したくなるアイデアを発見しましょう。',
+    href: 'https://www.pinterest.jp/',
+    badge: 'New',
+    tags: ['image'],
+  },
+  {
+    id: 'pixabay',
+    title: 'Pixabay',
+    description:
+      'Find your perfect royalty-free image or video to download and use. ✓ Royalty-free ✓ No attribution required ✓ High quality images.',
+    href: 'https://pixabay.com/',
+    badge: 'New',
+    tags: ['image', 'movie', 'music'],
+  },
+  {
+    id: 'unsplash',
+    title: 'Unsplash',
+    description:
+      'あらゆるプロジェクトにダウンロードして利用可能な、美しい無料画像と写真の数々。どのロイヤリティフリーまたはストックフォトよりもお勧めです。',
+    href: 'https://unsplash.com/ja',
+    badge: 'New',
+    tags: ['image'],
+  },
 ] as const;

@@ -3,15 +3,11 @@
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { mainTags } from '@/data/tag';
-import { useTagParams } from '@/hooks/use-tag-params';
-import { cn } from '@/lib/utils';
 import { Menu } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
+import SideBarButton from './side-bar-button';
 
 export default function MobileNav() {
-  const { getTagLabel, addTagToSearchParams, tags } = useTagParams();
-
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -33,9 +29,7 @@ export default function MobileNav() {
         <div className='flex flex-col space-y-1'>
           {mainTags.map((tagId) => (
             <SheetClose asChild key={tagId}>
-              <Button variant='ghost' className={cn('justify-start', tags[0] === tagId && 'bg-accent')} asChild>
-                <Link href={`/?tags=${addTagToSearchParams(tagId)}`}>{getTagLabel(tagId)}</Link>
-              </Button>
+              <SideBarButton tagId={tagId} />
             </SheetClose>
           ))}
         </div>

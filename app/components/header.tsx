@@ -10,7 +10,7 @@ export default function Header() {
       <div className='flex h-16 items-center justify-between  px-4'>
         <Button asChild variant='ghost' className='text-lg font-black hover:opacity-90'>
           <Link href='/'>
-            <Image src='/oretoku-tools.svg' alt='logo' className=' dark:invert' width={150} height={26} priority />
+            <Image src='/oretoku-tools.svg' alt='logo' className='dark:invert' width={150} height={26} priority />
           </Link>
         </Button>
         <div className='lg:hidden'>

@@ -1,21 +1,14 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
 import { mainTags } from '@/data/tag';
-import { useTagParams } from '@/hooks/use-tag-params';
-import { cn } from '@/lib/utils';
-import Link from 'next/link';
+import SideBarButton from './side-bar-button';
 
 export default function SideBar() {
-  const { addTagToSearchParams, getTagLabel, tags } = useTagParams();
-
   return (
     <div className='hidden w-64 border-r lg:block'>
       <div className='flex flex-col space-y-1 p-4'>
         {mainTags.map((tagId) => (
-          <Button key={tagId} variant='ghost' className={cn('justify-start', tags[0] === tagId && 'bg-accent')} asChild>
-            <Link href={`/?tags=${addTagToSearchParams(tagId)}`}>{getTagLabel(tagId)}</Link>
-          </Button>
+          <SideBarButton key={tagId} tagId={tagId} />
         ))}
       </div>
     </div>
