@@ -26,7 +26,7 @@ export default function RootLayout({
       <body className={cn(inter.className, 'h-dvh flex flex-col')} suppressHydrationWarning>
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
           <Header />
-          <main className='flex flex-1'>
+          <main className='mt-16 flex flex-1'>
             <Suspense>
               <SideBar />
             </Suspense>

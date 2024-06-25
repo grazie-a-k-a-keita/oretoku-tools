@@ -8,7 +8,7 @@ import { useTagParams } from '@/hooks/use-tag-params';
 import Link from 'next/link';
 
 export default function Page() {
-  const { tags, removeTagFromSearchParams } = useTagParams();
+  const { tags, removeTagFromSearchParams, getTagLabel } = useTagParams();
 
   const currentItems = allItems.filter((item) => {
     if (tags.length === 0) {
@@ -30,10 +30,10 @@ export default function Page() {
             {tags.map((tag, index) => (
               <div key={tag} className='shrink-0'>
                 {index === 0 ? (
-                  <Button size='sm'>{tag}</Button>
+                  <Button size='sm'>{getTagLabel(tag)}</Button>
                 ) : (
                   <Button size='sm' variant='secondary' asChild>
-                    <Link href={`/?tags=${removeTagFromSearchParams(tag)}`}>{tag}</Link>
+                    <Link href={`/?tags=${removeTagFromSearchParams(tag)}`}>{getTagLabel(tag)}</Link>
                   </Button>
                 )}
               </div>
