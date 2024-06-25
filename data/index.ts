@@ -60,4 +60,13 @@ export const allItems: Item[] = [
     badge: 'New',
     tags: ['image'],
   },
+  {
+    id: 'shadcn-ui',
+    title: 'shadcn/ui',
+    description:
+      'Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.',
+    href: 'https://ui.shadcn.com/',
+    badge: 'New',
+    tags: ['develop', 'ui', 'react', 'next'],
+  },
 ] as const;

@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import type { TagId } from '@/data/tag';
 import { useTagParams } from '@/hooks/use-tag-params';
 import { cn } from '@/lib/utils';
-import { Image as _Image, Squirrel } from 'lucide-react';
+import { SquareCode, Squirrel, Image as _Image } from 'lucide-react';
 import Link from 'next/link';
 
 export default function SideBarButton({ tagId, ...restProps }: { tagId: TagId }) {
@@ -22,6 +22,7 @@ export default function SideBarButton({ tagId, ...restProps }: { tagId: TagId })
       <Link href={`/?tags=${addTagToSearchParams(tagId)}`} className='gap-3' {...restProps}>
         {tagId === 'icon' && <Squirrel size={20} />}
         {tagId === 'image' && <_Image size={20} />}
+        {tagId === 'develop' && <SquareCode size={20} />}
         {getTagLabel(tagId)}
       </Link>
     </Button>
