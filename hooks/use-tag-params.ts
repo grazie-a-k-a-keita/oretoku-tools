@@ -21,5 +21,9 @@ export const useTagParams = () => {
     }
   };
 
-  return { tags, addTagToSearchParams, getTagLabel };
+  const removeTagFromSearchParams = (tag: TagId) => {
+    return tags.filter((t) => t !== tag).join(',');
+  };
+
+  return { tags, addTagToSearchParams, getTagLabel, removeTagFromSearchParams };
 };

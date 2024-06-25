@@ -1,11 +1,14 @@
 'use client';
 
 import ItemCard from '@/components/item-card';
+import { Button } from '@/components/ui/button';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { allItems } from '@/data';
 import { useTagParams } from '@/hooks/use-tag-params';
+import Link from 'next/link';
 
 export default function Page() {
-  const { tags } = useTagParams();
+  const { tags, removeTagFromSearchParams } = useTagParams();
 
   const currentItems = allItems.filter((item) => {
     if (tags.length === 0) {
@@ -19,10 +22,31 @@ export default function Page() {
   }
 
   return (
-    <div className='grid flex-1 grid-cols-1 gap-4 p-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
-      {currentItems.map((item) => (
-        <ItemCard key={item.title} {...item} />
-      ))}
+    <div className='p-4'>
+      <div className='mb-4 grid grid-cols-1'>
+        <ScrollArea className='w-full whitespace-nowrap'>
+          <div className='flex w-max space-x-4'>
+            {tags.length === 0 && <Button size='sm'>All</Button>}
+            {tags.map((tag, index) => (
+              <div key={tag} className='shrink-0'>
+                {index === 0 ? (
+                  <Button size='sm'>{tag}</Button>
+                ) : (
+                  <Button size='sm' variant='secondary' asChild>
+                    <Link href={`/?tags=${removeTagFromSearchParams(tag)}`}>{tag}</Link>
+                  </Button>
+                )}
+              </div>
+            ))}
+          </div>
+          <ScrollBar orientation='horizontal' className='hidden' />
+        </ScrollArea>
+      </div>
+      <div className='grid flex-1 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
+        {currentItems.map((item) => (
+          <ItemCard key={item.title} {...item} />
+        ))}
+      </div>
     </div>
   );
 }
