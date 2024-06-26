@@ -49,7 +49,7 @@ export const allItems: Item[] = [
       'Find your perfect royalty-free image or video to download and use. ✓ Royalty-free ✓ No attribution required ✓ High quality images.',
     href: 'https://pixabay.com/',
     badge: 'New',
-    tags: ['image', 'movie', 'music'],
+    tags: ['image', 'movie', 'music', 'illust'],
   },
   {
     id: 'unsplash',
@@ -68,5 +68,41 @@ export const allItems: Item[] = [
     href: 'https://ui.shadcn.com/',
     badge: 'New',
     tags: ['develop', 'ui', 'react', 'next'],
+  },
+  {
+    id: 'tailwindcss',
+    title: 'Tailwind CSS',
+    description:
+      'Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML.',
+    href: 'https://tailwindcss.com/',
+    badge: 'New',
+    tags: ['develop', 'ui', 'react', 'next'],
+  },
+  {
+    id: 'mui',
+    title: 'MUI',
+    description:
+      'MUI provides a simple, customizable, and accessible library of React components. Follow your own design system, or start with Material Design.',
+    href: 'https://mui.com/',
+    badge: 'New',
+    tags: ['develop', 'ui', 'react', 'next'],
+  },
+  {
+    id: 'mdn',
+    title: 'MDN',
+    description:
+      'オープンなウェブは、開発者に素晴らしい機会をもたらします。これらの技術を最大限に活用するには、それらの使い方を知る必要があります。以下に、ウェブ技術のドキュメントへのリンクがあります。',
+    href: 'https://developer.mozilla.org/ja/docs/Web',
+    badge: 'New',
+    tags: ['develop', 'html', 'css', 'javascript'],
+  },
+  {
+    id: 'irasutoya',
+    title: 'いらすとや',
+    description:
+      '無料で使えるかわいいイラストの素材集です。個人利用・商用利用ともに完全無料。季節のイベントのイラストや動物や子供のイラストなど、使いやすいイラストが盛りだくさん。透過PNG形式で、組み合わせも簡単です。',
+    href: 'https://www.irasutoya.com/',
+    badge: 'New',
+    tags: ['illust'],
   },
 ] as const;
