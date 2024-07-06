@@ -97,11 +97,55 @@ export const allItems: Item[] = [
     tags: ['develop', 'html', 'css', 'javascript'],
   },
   {
-    id: 'irasutoya',
+    id: 'no-image',
     title: 'いらすとや',
     description:
       '無料で使えるかわいいイラストの素材集です。個人利用・商用利用ともに完全無料。季節のイベントのイラストや動物や子供のイラストなど、使いやすいイラストが盛りだくさん。透過PNG形式で、組み合わせも簡単です。',
     href: 'https://www.irasutoya.com/',
+    badge: 'New',
+    tags: ['illust'],
+  },
+  {
+    id: 'tailwind-play',
+    title: 'Tailwind Play',
+    description:
+      "An advanced online playground for Tailwind CSS that lets you use all of Tailwind's build-time features directly in the browser.",
+    href: 'https://play.tailwindcss.com/',
+    badge: 'New',
+    tags: ['develop', 'css'],
+  },
+  {
+    id: 'no-image',
+    title: 'Css To Tailwind',
+    description: 'Css To Tailwind',
+    href: 'https://hymhub.github.io/css-to-tailwind/',
+    badge: 'New',
+    tags: ['develop', 'css'],
+  },
+  {
+    id: 'loose-drawing',
+    title: 'Loose Drawing',
+    description:
+      'シンプルなイラストが見つかるフリー素材サイト Loose Drawing。商用利用可能。広告、フライヤー、ポスター、企画書、スライド資料など様々なデザイン制作で使えるイラストを無料で更新しています。',
+    href: 'https://loosedrawing.com/',
+    badge: 'New',
+    tags: ['illust'],
+  },
+  {
+    id: 'pixels-market',
+    title: 'pixels.market',
+    description:
+      'Customize and download thousands of illustrations available in a dozen styles: Flat, Isometric, Monochromatic, and more.',
+    href: 'https://pixels.market/illustrations/birdview?c=environment',
+    badge: 'New',
+    tags: ['illust', 'icon'],
+  },
+  {
+    id: 'un-draw',
+    title: 'unDraw',
+    description:
+      'The design project with open-source illustrations for any idea you can imagine and create. Create beautiful websites, products and applications with your color, for free.',
+    href: 'https://undraw.co/illustrations',
     badge: 'New',
     tags: ['illust'],
   },
