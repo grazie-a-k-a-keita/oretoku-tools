@@ -22,31 +22,33 @@ export default function Page() {
   }
 
   return (
-    <div className='p-4'>
-      <div className='mb-4 grid grid-cols-1'>
-        <ScrollArea className='w-full whitespace-nowrap'>
-          <div className='flex w-max space-x-4'>
-            {tags.length === 0 && <Button size='sm'>All</Button>}
-            {tags.map((tag, index) => (
-              <div key={tag} className='shrink-0'>
-                {index === 0 ? (
-                  <Button size='sm'>{getTagLabel(tag)}</Button>
-                ) : (
-                  <Button size='sm' variant='secondary' asChild>
-                    <Link href={`/?tags=${removeTagFromSearchParams(tag)}`}>{getTagLabel(tag)}</Link>
-                  </Button>
-                )}
-              </div>
-            ))}
-          </div>
-          <ScrollBar orientation='horizontal' className='hidden' />
-        </ScrollArea>
+    <ScrollArea className='h-[calc(100dvh-130px)]'>
+      <div className='p-4'>
+        <div className='mb-4 grid grid-cols-1'>
+          <ScrollArea className='w-full whitespace-nowrap'>
+            <div className='flex w-max space-x-4'>
+              {tags.length === 0 && <Button size='sm'>All</Button>}
+              {tags.map((tag, index) => (
+                <div key={tag} className='shrink-0'>
+                  {index === 0 ? (
+                    <Button size='sm'>{getTagLabel(tag)}</Button>
+                  ) : (
+                    <Button size='sm' variant='secondary' asChild>
+                      <Link href={`/?tags=${removeTagFromSearchParams(tag)}`}>{getTagLabel(tag)}</Link>
+                    </Button>
+                  )}
+                </div>
+              ))}
+            </div>
+            <ScrollBar orientation='horizontal' className='hidden' />
+          </ScrollArea>
+        </div>
+        <div className='grid flex-1 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
+          {currentItems.map((item) => (
+            <ItemCard key={item.title} {...item} />
+          ))}
+        </div>
       </div>
-      <div className='grid flex-1 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
-        {currentItems.map((item) => (
-          <ItemCard key={item.title} {...item} />
-        ))}
-      </div>
-    </div>
+    </ScrollArea>
   );
 }
