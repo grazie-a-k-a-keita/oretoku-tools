@@ -6,6 +6,6 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const getURL = () => {
-  const url = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  const url = process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL;
   return url ? url : `http://localhost:${process.env.PORT || 3000}`;
 };
