@@ -22,21 +22,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='ja' suppressHydrationWarning>
-      <body className={cn(inter.className, 'h-dvh flex flex-col')} suppressHydrationWarning>
-        <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
-          <Header />
-          <main className='mt-16 flex flex-1'>
-            <Suspense>
-              <SideBar />
-            </Suspense>
-            <div className='flex-1 bg-muted/30'>
-              <Suspense>{children}</Suspense>
-            </div>
-          </main>
-          <Footer />
-        </ThemeProvider>
-      </body>
-    </html>
+    <>
+      <head>
+        <meta name='google-site-verification' content='WrixKoEfjuRBMfWSj8SGE01gpJ-zxESUvUHqkqWYn3E' />
+      </head>
+      <html lang='ja' suppressHydrationWarning>
+        <body className={cn(inter.className, 'h-dvh flex flex-col')} suppressHydrationWarning>
+          <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
+            <Header />
+            <main className='mt-16 flex flex-1'>
+              <Suspense>
+                <SideBar />
+              </Suspense>
+              <div className='flex-1 bg-muted/30'>
+                <Suspense>{children}</Suspense>
+              </div>
+            </main>
+            <Footer />
+          </ThemeProvider>
+        </body>
+      </html>
+    </>
   );
 }
