@@ -1,4 +1,5 @@
 import { useTagParams } from '@/hooks/use-tag-params';
+import { cn } from '@/lib/utils';
 import type { Item } from '@/types/item';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,7 +15,7 @@ export default function ItemCard({ id, title, description, href, badge, tags }: 
           <div className='relative mb-3 aspect-square w-1/4 overflow-hidden rounded-md'>
             <Image fill className='object-cover' src={`/images/${id}.png`} alt='' priority />
           </div>
-          <div>
+          <div className={cn(badge === '' && 'hidden')}>
             <Badge variant='secondary'>{badge}</Badge>
           </div>
         </div>

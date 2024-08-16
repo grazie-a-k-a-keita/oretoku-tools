@@ -1,1 +1,1 @@
-export type Badge = 'New';
+export type Badge = 'New' | 'Favorite';
