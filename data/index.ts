@@ -163,7 +163,7 @@ export const allItems: Item[] = [
     title: 'The best Favicon Generator',
     description: 'With Favicon.io you can quickly generate a favicon for your website for free!',
     href: 'https://favicon.io/',
-    badge: 'New',
+    badge: '',
     tags: ['image', 'generator'],
   },
   {
@@ -171,7 +171,16 @@ export const allItems: Item[] = [
     title: 'OpenGraph',
     description: 'OpenGraph is the easiest way to preview and generate open graph meta tags for any website.',
     href: 'https://www.opengraph.xyz/',
-    badge: 'New',
+    badge: 'Favorite',
     tags: ['image', 'html', 'develop'],
+  },
+  {
+    id: 'date-fns',
+    title: 'date-fns',
+    description:
+      'date-fns provides the most comprehensive yet simple and consistent toolset for manipulating JavaScript dates in a browser & Node.js.',
+    href: 'https://date-fns.org/docs/Getting-Started',
+    badge: 'New',
+    tags: ['develop', 'javascript', 'react', 'next'],
   },
 ] as const;
