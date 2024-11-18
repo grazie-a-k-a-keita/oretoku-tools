@@ -180,7 +180,32 @@ export const allItems: Item[] = [
     description:
       'date-fns provides the most comprehensive yet simple and consistent toolset for manipulating JavaScript dates in a browser & Node.js.',
     href: 'https://date-fns.org/docs/Getting-Started',
-    badge: 'New',
+    badge: '',
     tags: ['develop', 'javascript', 'react', 'next'],
+  },
+  {
+    id: 'dice-bear',
+    title: 'DiceBear',
+    description:
+      'あなたがずっと探していたアバター ライブラリ。プロフィール、デザイン、Web サイト、アプリ用のアバターを作成します。ピースごとに、またはシードに基づいて作成します。',
+    href: 'https://www.dicebear.com/',
+    badge: 'New',
+    tags: ['avatar'],
+  },
+  {
+    id: 'svgl',
+    title: 'svgl',
+    description: 'SVGロゴの美しいライブラリ',
+    href: 'https://svgl.app/',
+    badge: 'New',
+    tags: ['icon'],
+  },
+  {
+    id: 'notion-avatar-maker',
+    title: 'Notion Avatar Maker',
+    description: 'Notionスタイルのアバターを作成するためのオンラインツール。',
+    href: 'https://notion-avatar.vercel.app/',
+    badge: 'New',
+    tags: ['avatar', 'generator'],
   },
 ] as const;
