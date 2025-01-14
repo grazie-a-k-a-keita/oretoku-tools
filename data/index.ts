@@ -189,7 +189,7 @@ export const allItems: Item[] = [
     description:
       'あなたがずっと探していたアバター ライブラリ。プロフィール、デザイン、Web サイト、アプリ用のアバターを作成します。ピースごとに、またはシードに基づいて作成します。',
     href: 'https://www.dicebear.com/',
-    badge: 'New',
+    badge: '',
     tags: ['avatar'],
   },
   {
@@ -197,7 +197,7 @@ export const allItems: Item[] = [
     title: 'svgl',
     description: 'SVGロゴの美しいライブラリ',
     href: 'https://svgl.app/',
-    badge: 'New',
+    badge: '',
     tags: ['icon'],
   },
   {
@@ -205,7 +205,32 @@ export const allItems: Item[] = [
     title: 'Notion Avatar Maker',
     description: 'Notionスタイルのアバターを作成するためのオンラインツール。',
     href: 'https://notion-avatar.vercel.app/',
-    badge: 'New',
+    badge: '',
     tags: ['avatar', 'generator'],
+  },
+  {
+    id: 'no-image',
+    title: '食品画像のそざい屋さん',
+    description:
+      '実物大の食品の写真画像素材がすべて無料でダウンロードできます。WordやPowerPointで実物大の挿絵や媒体づくりに！食品、食材、食べ物写真のフリーダウンロードサイト。',
+    href: 'https://sozaiya-san.jp/',
+    badge: 'New',
+    tags: ['image'],
+  },
+  {
+    id: 'one-div-loaders',
+    title: 'OneDivLoaders',
+    description: '純粋なCSSと1つのdiv要素で構築されたモノクロローダー(読み込みスピナー)のオープンソースコレクション。',
+    href: 'https://onedivloaders.vercel.app/',
+    badge: 'New',
+    tags: ['css', 'javascript', 'react', 'next', 'ui'],
+  },
+  {
+    id: 'devicon',
+    title: 'DEVICON',
+    description: 'Deviconは、開発言語とツールを表すすべてのロゴを1つのフォントにまとめることを目指しています。🚀',
+    href: 'https://devicon.dev/',
+    badge: 'New',
+    tags: ['icon'],
   },
 ] as const;
