@@ -9,8 +9,8 @@ export default function ItemCard({ id, title, description, href, badge, tags }: 
   const { getTagLabel, addTagToSearchParams } = useTagParams();
 
   return (
-    <div className='relative rounded-lg border bg-card p-4 shadow-sm transition duration-500 hover:shadow-lg'>
-      <div className='min-h-60 rounded-lg border bg-muted/10 p-4'>
+    <div className='relative flex flex-col rounded-lg border bg-card p-4 shadow-sm transition duration-500 hover:shadow-lg'>
+      <div className='min-h-60 flex-1 rounded-lg border bg-muted/10 p-4'>
         <div className='flex justify-between'>
           <div className='relative mb-3 aspect-square w-1/4 overflow-hidden rounded-md'>
             <Image fill className='object-cover' src={`/images/${id}.png`} alt='' priority />

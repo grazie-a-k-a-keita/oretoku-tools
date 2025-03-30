@@ -214,7 +214,7 @@ export const allItems: Item[] = [
     description:
       '実物大の食品の写真画像素材がすべて無料でダウンロードできます。WordやPowerPointで実物大の挿絵や媒体づくりに！食品、食材、食べ物写真のフリーダウンロードサイト。',
     href: 'https://sozaiya-san.jp/',
-    badge: 'New',
+    badge: '',
     tags: ['image'],
   },
   {
@@ -222,7 +222,7 @@ export const allItems: Item[] = [
     title: 'OneDivLoaders',
     description: '純粋なCSSと1つのdiv要素で構築されたモノクロローダー(読み込みスピナー)のオープンソースコレクション。',
     href: 'https://onedivloaders.vercel.app/',
-    badge: 'New',
+    badge: '',
     tags: ['css', 'javascript', 'react', 'next', 'ui'],
   },
   {
@@ -230,7 +230,24 @@ export const allItems: Item[] = [
     title: 'DEVICON',
     description: 'Deviconは、開発言語とツールを表すすべてのロゴを1つのフォントにまとめることを目指しています。🚀',
     href: 'https://devicon.dev/',
+    badge: '',
+    tags: ['icon'],
+  },
+  {
+    id: 'pixel-icon-library',
+    title: 'Pixel Icon Library',
+    description:
+      'HackerNoon のピクセル アイコン ライブラリは、完璧な配置のために 24 ピクセルのグリッド上に設計された、ピクセル化されたアイコンのオープン ソース コレクションです。HackerNoon の美学に触発されています。',
+    href: 'https://pixeliconlibrary.com/',
     badge: 'New',
     tags: ['icon'],
+  },
+  {
+    id: 'slidev',
+    title: 'Slidev',
+    description: '開発者向けプレゼンテーションスライド',
+    href: 'https://sli.dev/',
+    badge: 'New',
+    tags: ['presentation', 'develop'],
   },
 ] as const;
