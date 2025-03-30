@@ -15,8 +15,9 @@ export const allTags = [
   { id: 'docker', label: 'Docker' },
   { id: 'generator', label: 'Generator' },
   { id: 'avatar', label: 'Avatar' },
+  { id: 'presentation', label: 'Presentation' },
 ] as const;
 
 export type TagId = (typeof allTags)[number]['id'];
 
-export const mainTags: TagId[] = ['icon', 'image', 'develop', 'illust', 'generator', 'avatar'];
+export const mainTags: TagId[] = ['icon', 'image', 'develop', 'illust', 'generator', 'avatar', 'presentation'];

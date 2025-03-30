@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import type { TagId } from '@/data/tag';
 import { useTagParams } from '@/hooks/use-tag-params';
 import { cn } from '@/lib/utils';
-import { Dna, Palette, Smile, SquareCode, Squirrel, Image as _Image } from 'lucide-react';
+import { Dna, Palette, Presentation, Smile, SquareCode, Squirrel, Image as _Image } from 'lucide-react';
 import Link from 'next/link';
 
 export default function SideBarButton({ tagId, ...restProps }: { tagId: TagId }) {
@@ -26,6 +26,7 @@ export default function SideBarButton({ tagId, ...restProps }: { tagId: TagId })
         {tagId === 'illust' && <Palette size={20} />}
         {tagId === 'generator' && <Dna size={20} />}
         {tagId === 'avatar' && <Smile size={20} />}
+        {tagId === 'presentation' && <Presentation size={20} />}
         {getTagLabel(tagId)}
       </Link>
     </Button>
