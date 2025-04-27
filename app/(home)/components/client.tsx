@@ -3,18 +3,19 @@
 import ItemCard from '@/components/item-card';
 import { Button } from '@/components/ui/button';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
-import { allItems } from '@/data';
 import { useTagParams } from '@/hooks/use-tag-params';
+import type { Item, Tag } from '@/types/newt';
 import Link from 'next/link';
 
-export default function Page() {
-  const { tags, removeTagFromSearchParams, getTagLabel } = useTagParams();
+export default function Client({ itemData, tagData }: { itemData: Item[]; tagData: Tag[] }) {
+  const { tags, removeTagFromSearchParams, getTagLabel } = useTagParams({ allTags: tagData });
 
-  const currentItems = allItems.filter((item) => {
+  const currentItems = itemData.filter((item) => {
     if (tags.length === 0) {
       return true;
     }
-    return tags.every((tag) => item.tags.includes(tag));
+
+    return tags.every((tag) => item.tag.some((t) => t.slug === tag));
   });
 
   if (currentItems.length === 0) {
@@ -45,7 +46,7 @@ export default function Page() {
         </div>
         <div className='grid flex-1 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
           {currentItems.map((item) => (
-            <ItemCard key={item.title} {...item} />
+            <ItemCard key={item.title} tags={tagData} item={item} />
           ))}
         </div>
       </div>
