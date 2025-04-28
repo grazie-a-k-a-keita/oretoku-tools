@@ -38,7 +38,7 @@ export default function Client({ itemData, tagData }: { itemData: Item[]; tagDat
   }, [searchParams]);
 
   if (currentItems.length === 0) {
-    return <p className='m-10 text-center text-base text-muted-foreground'>Not found</p>;
+    return <p className='m-10 text-center text-base text-muted-foreground'>アイテムが見つかりませんでした🙅‍♂️</p>;
   }
 
   return (
