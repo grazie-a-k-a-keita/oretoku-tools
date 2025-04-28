@@ -2,6 +2,7 @@ import type { Content, Image } from 'newt-client-js';
 
 export type Item = {
   slug: string;
+  image: Image;
   title: string;
   description: string;
   url: string;

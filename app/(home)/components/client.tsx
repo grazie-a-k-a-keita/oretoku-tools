@@ -3,20 +3,39 @@
 import ItemCard from '@/components/item-card';
 import { Button } from '@/components/ui/button';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+import { useLocalStorage } from '@/hooks/use-local-storage';
 import { useTagParams } from '@/hooks/use-tag-params';
 import type { Item, Tag } from '@/types/newt';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function Client({ itemData, tagData }: { itemData: Item[]; tagData: Tag[] }) {
   const { tags, removeTagFromSearchParams, getTagLabel } = useTagParams({ allTags: tagData });
+  const searchParams = useSearchParams();
+  const { getAllItems } = useLocalStorage();
+  const [currentItems, setCurrentItems] = useState<Item[]>(itemData);
 
-  const currentItems = itemData.filter((item) => {
-    if (tags.length === 0) {
-      return true;
+  useEffect(() => {
+    if (searchParams.get('favorite') === 'true') {
+      // お気に入りのアイテムを取得
+      const items = getAllItems();
+      const favoriteItems = itemData.filter((item) => items[item.slug] === 'true');
+      setCurrentItems(favoriteItems);
+    } else {
+      // タグでフィルタリング
+      const currentItems = itemData.filter((item) => {
+        if (tags.length === 0) {
+          return true;
+        }
+
+        return tags.every((tag) => item.tag.some((t) => t.slug === tag));
+      });
+
+      setCurrentItems(currentItems);
     }
-
-    return tags.every((tag) => item.tag.some((t) => t.slug === tag));
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   if (currentItems.length === 0) {
     return <p className='m-10 text-center text-base text-muted-foreground'>Not found</p>;

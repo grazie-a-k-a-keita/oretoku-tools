@@ -22,7 +22,7 @@ export default function FavoriteSelect() {
 
   return (
     <Button size='icon' asChild variant='ghost'>
-      <Link href={favorite ? '/?favorite=false' : '/?favorite=true'} className='flex items-center justify-center'>
+      <Link href={favorite ? '/' : '/?favorite=true'} className='flex items-center justify-center'>
         <Star className={cn('size-5', favorite && 'fill-yellow-500 text-yellow-500')} />
       </Link>
     </Button>

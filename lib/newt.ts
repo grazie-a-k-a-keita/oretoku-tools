@@ -15,7 +15,7 @@ export const getItems = cache(async () => {
     appUid: process.env.NEWT_APP_UID || '',
     modelUid: 'item',
     query: {
-      select: ['_sys', 'slug', 'title', 'description', 'url', 'tag'],
+      select: ['_sys', 'slug', 'image', 'title', 'description', 'url', 'tag'],
       order: ['slug'],
     },
   });

@@ -17,7 +17,14 @@ export default function ItemCard({ item, tags }: { item: Item; tags: Tag[] }) {
       <div className='min-h-60 flex-1 rounded-lg border bg-muted/10 p-4'>
         <div className='flex justify-between'>
           <div className='relative mb-3 aspect-square w-1/4 overflow-hidden rounded-md'>
-            <Image fill className='object-cover' src={`/images/${item.slug}.png`} alt={item.slug} priority />
+            <Image
+              fill
+              className='object-cover'
+              src={item.image.src}
+              alt={item.slug}
+              priority
+              sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw'
+            />
           </div>
           <div className='flex h-fit items-center gap-3'>
             <div className={cn(new Date(item._sys.updatedAt) < subMonths(new Date(), 1) && 'hidden')}>
@@ -35,16 +42,18 @@ export default function ItemCard({ item, tags }: { item: Item; tags: Tag[] }) {
         <p className='line-clamp-2 pt-2 text-sm font-medium'>{item.description}</p>
       </div>
       <div className='mt-4 flex flex-wrap gap-2'>
-        {item.tag.map((t) => (
-          <Link
-            key={t.slug}
-            href={`/?tags=${addTagToSearchParams(t.slug, true)}`}
-            className='relative z-10 whitespace-nowrap rounded border bg-muted px-1.5 py-1 text-xs text-muted-foreground'
-          >
-            <span className='mr-1 inline-block rounded bg-muted-foreground/10 p-0.5 px-1 leading-none'>#</span>
-            {getTagLabel(t.slug)}
-          </Link>
-        ))}
+        {item.tag
+          .sort((a, b) => a.slug.localeCompare(b.slug))
+          .map((t) => (
+            <Link
+              key={t.slug}
+              href={`/?tags=${addTagToSearchParams(t.slug, true)}`}
+              className='relative z-10 whitespace-nowrap rounded border bg-muted px-1.5 py-1 text-xs text-muted-foreground'
+            >
+              <span className='mr-1 inline-block rounded bg-muted-foreground/10 p-0.5 px-1 leading-none'>#</span>
+              {getTagLabel(t.slug)}
+            </Link>
+          ))}
       </div>
     </div>
   );
