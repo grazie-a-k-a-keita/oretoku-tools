@@ -15,7 +15,9 @@ export default function Header() {
               <Image src='/oretoku-tools.svg' alt='logo' className='dark:invert' width={150} height={26} priority />
             </Link>
           </Button>
-          <FavoriteSelect />
+          <Suspense>
+            <FavoriteSelect />
+          </Suspense>
         </div>
         <div className='lg:hidden'>
           <Suspense>
