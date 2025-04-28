@@ -1,17 +1,16 @@
 'use client';
 
-import type { TagId } from '@/data/tag';
-import { allTags } from '@/data/tag';
+import type { Tag } from '@/types/newt';
 import { useSearchParams } from 'next/navigation';
 
-export const useTagParams = () => {
-  const tags = (useSearchParams().get('tags')?.split(',').filter(Boolean) ?? []) as TagId[];
+export const useTagParams = ({ allTags }: { allTags: Tag[] }) => {
+  const tags = (useSearchParams().get('tags')?.split(',').filter(Boolean) ?? []) as string[];
 
-  const getTagLabel = (tagId: TagId) => {
-    return allTags.find((t) => t.id === tagId)?.label ?? tagId;
+  const getTagLabel = (tagId: string) => {
+    return allTags.find((t) => t.slug === tagId)?.label ?? tagId;
   };
 
-  const addTagToSearchParams = (tag: TagId, keepMainTag?: boolean) => {
+  const addTagToSearchParams = (tag: string, keepMainTag?: boolean) => {
     const src = keepMainTag ? tags : [];
 
     if (src.includes(tag)) {
@@ -21,7 +20,7 @@ export const useTagParams = () => {
     }
   };
 
-  const removeTagFromSearchParams = (tag: TagId) => {
+  const removeTagFromSearchParams = (tag: string) => {
     return tags.filter((t) => t !== tag).join(',');
   };
 

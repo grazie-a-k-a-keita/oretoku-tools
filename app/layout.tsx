@@ -4,9 +4,9 @@ import { cn, getURL } from '@/lib/utils';
 import type { Metadata } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
 import { Suspense } from 'react';
-import Footer from './components/footer';
-import Header from './components/header';
-import SideBar from './components/side-bar';
+import Footer from '../components/footer';
+import Header from '../components/header';
+import SideBar from '../components/side-bar';
 import './globals.css';
 
 const notoSansJp = Noto_Sans_JP({ subsets: ['latin'] });
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(getURL()),
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
