@@ -1,17 +1,21 @@
-import { TAGS } from '@/lib/tag';
-import Link from 'next/link';
-import { Button } from './ui/button';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { getTags } from '@/lib/newt';
+import SideBarButton from './side-bar-button';
 
-export default function SideBar() {
+export default async function SideBar() {
+  const tags = await getTags();
+
   return (
-    <div className="hidden w-64 border-r lg:block">
-      <div className="flex flex-col p-4">
-        {TAGS.map((tag) => (
-          <Button key={tag.id} variant="ghost" className="justify-start" asChild>
-            <Link href={`/${tag.id}`}>{tag.label}</Link>
-          </Button>
-        ))}
+    <ScrollArea className='h-[calc(100dvh-130px)]'>
+      <div className='hidden h-[calc(100dvh-130px)] w-64 border-r lg:block'>
+        <div className='flex flex-col space-y-1 p-4'>
+          {tags
+            .filter((tag) => tag.ismain)
+            .map((tag) => (
+              <SideBarButton key={tag.slug} tagId={tag.slug} iconUrl={tag.image.src} _tags={tags} />
+            ))}
+        </div>
       </div>
-    </div>
+    </ScrollArea>
   );
 }
