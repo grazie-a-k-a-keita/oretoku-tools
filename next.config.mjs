@@ -8,8 +8,8 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'grazie-parsonal.assets.newt.so',
-        pathname: '/v1/**',
+        hostname: 'images-bucket-grazie.s3.ap-northeast-1.amazonaws.com',
+        pathname: '/oretoku-tools/**',
       },
     ],
   },

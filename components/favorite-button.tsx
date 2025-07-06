@@ -5,14 +5,14 @@ import { cn } from '@/lib/utils';
 import { Star } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-export default function FavoriteButton({ slug }: { slug: string }) {
+export default function FavoriteButton({ id }: { id: string }) {
   const [clicked, setClicked] = useState(false);
   const [favorite, setFavorite] = useState(false);
   const { getAllItems, getItem, setItem, removeItem } = useLocalStorage();
 
   useEffect(() => {
     const items = getAllItems();
-    if (items[slug]) setFavorite(true);
+    if (items[id]) setFavorite(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -21,11 +21,11 @@ export default function FavoriteButton({ slug }: { slug: string }) {
       onClick={() => {
         setClicked(true);
         setTimeout(() => setClicked(false), 300);
-        if (getItem({ key: slug }) === 'true') {
-          removeItem({ key: slug });
+        if (getItem({ key: id }) === 'true') {
+          removeItem({ key: id });
           setFavorite(false);
         } else {
-          setItem({ key: slug, value: 'true' });
+          setItem({ key: id, value: 'true' });
           setFavorite(true);
         }
       }}

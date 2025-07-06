@@ -1,28 +1,22 @@
 'use client';
 
-import type { Tag } from '@/types/newt';
+import type { Tag } from '@/types/api';
 import { useSearchParams } from 'next/navigation';
 
 export const useTagParams = ({ allTags }: { allTags: Tag[] }) => {
-  const tags = (useSearchParams().get('tags')?.split(',').filter(Boolean) ?? []) as string[];
+  const tag = useSearchParams().get('tag');
 
-  const getTagLabel = (tagId: string) => {
-    return allTags.find((t) => t.slug === tagId)?.label ?? tagId;
+  /**
+   * URLパラメータのタグ
+   */
+  const selectedTag = tag ? Number(tag) : null;
+
+  /**
+   * idからタグの名称を取得する
+   */
+  const getTagLabel = (tagId: number) => {
+    return allTags.find((t) => t.id === tagId)?.name ?? '';
   };
 
-  const addTagToSearchParams = (tag: string, keepMainTag?: boolean) => {
-    const src = keepMainTag ? tags : [];
-
-    if (src.includes(tag)) {
-      return src.join(',');
-    } else {
-      return [...src, tag].join(',');
-    }
-  };
-
-  const removeTagFromSearchParams = (tag: string) => {
-    return tags.filter((t) => t !== tag).join(',');
-  };
-
-  return { tags, addTagToSearchParams, getTagLabel, removeTagFromSearchParams };
+  return { selectedTag, getTagLabel };
 };

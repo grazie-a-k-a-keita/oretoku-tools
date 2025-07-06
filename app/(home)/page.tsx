@@ -1,4 +1,4 @@
-import { getItems, getTags } from '@/lib/newt';
+import { getItems, getTags } from '@/lib/api';
 import { Suspense } from 'react';
 import Client from './components/client';
 
