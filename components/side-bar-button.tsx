@@ -30,7 +30,7 @@ export default function SideBarButton({
       asChild
     >
       <Link href={`/?tag=${tagId}`} className='gap-3' {...restProps}>
-        <Image height={20} width={20} src={iconUrl} alt={buttonLabel} className='text-white' />
+        <Image height={20} width={20} src={iconUrl} alt={buttonLabel} className='dark:invert' />
         {buttonLabel}
       </Link>
     </Button>
