@@ -4,6 +4,7 @@ import { useLocalStorage } from '@/hooks/use-local-storage';
 import { cn } from '@/lib/utils';
 import { Star } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { Button } from './ui/button';
 
 export default function FavoriteButton({ id }: { id: string }) {
   const [clicked, setClicked] = useState(false);
@@ -17,10 +18,13 @@ export default function FavoriteButton({ id }: { id: string }) {
   }, []);
 
   return (
-    <button
+    <Button
+      size='icon'
+      variant='ghost'
       onClick={() => {
         setClicked(true);
         setTimeout(() => setClicked(false), 300);
+
         if (getItem({ key: id }) === 'true') {
           removeItem({ key: id });
           setFavorite(false);
@@ -38,6 +42,6 @@ export default function FavoriteButton({ id }: { id: string }) {
           clicked ? 'scale-125' : 'scale-100',
         )}
       />
-    </button>
+    </Button>
   );
 }

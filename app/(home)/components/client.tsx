@@ -2,92 +2,82 @@
 
 import ItemCard from '@/components/item-card';
 import { Input } from '@/components/ui/input';
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+import type { Site } from '@/domain/site';
+import type { Tag } from '@/domain/tag';
 import { useLocalStorage } from '@/hooks/use-local-storage';
-import { useTagParams } from '@/hooks/use-tag-params';
-import type { ItemWithTags, Tag } from '@/types/api';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { useDebouncedCallback } from 'use-debounce';
 
-export default function Client({ itemData, tagData }: { itemData: ItemWithTags[]; tagData: Tag[] }) {
-  const { selectedTag, getTagLabel } = useTagParams({ allTags: tagData });
+export default function Client({ sites, tags }: { sites: Site[]; tags: Tag[] }) {
+  const pathname = usePathname();
   const searchParams = useSearchParams();
+  const router = useRouter();
   const { getAllItems } = useLocalStorage();
 
-  const [currentItems, setCurrentItems] = useState<ItemWithTags[]>(itemData);
-  const [filteredItems, setFilteredItems] = useState<ItemWithTags[]>(itemData);
-  const [inputValue, setInputValue] = useState<string>('');
+  const [search, setSearch] = useState<string>(searchParams.get('query')?.toString() || '');
 
   useEffect(() => {
-    setInputValue('');
+    const query = searchParams.get('query') || '';
+    setSearch(query);
+  }, [searchParams]);
 
-    if (searchParams.get('favorite') === 'true') {
-      // お気に入りのアイテムを取得
-      const items = getAllItems();
-      const favoriteItems = itemData.filter((item) => items[item.id] === 'true');
-      setCurrentItems(favoriteItems);
-      setFilteredItems(favoriteItems);
+  const handleSearch = useDebouncedCallback((term) => {
+    const params = new URLSearchParams(searchParams);
+    if (term) {
+      params.set('query', term);
     } else {
-      // タグでフィルタリング
-      const currentItems = itemData.filter((item) => {
-        if (selectedTag === null) return true;
-        return item.tags.some((tag) => tag.id === selectedTag);
-      });
-      setCurrentItems(currentItems);
-      setFilteredItems(currentItems);
+      params.delete('query');
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams.toString()]);
-
-  if (currentItems.length === 0) {
-    return <p className='m-10 text-center text-base text-muted-foreground'>アイテムが見つかりませんでした🙅‍♂️</p>;
-  }
+    router.replace(`${pathname}?${params.toString()}`);
+  }, 300);
 
   return (
-    <ScrollArea className='h-[calc(100dvh-130px)]'>
-      <div className='p-4'>
-        <div className='mb-4 grid grid-cols-1'>
-          <ScrollArea className='w-full whitespace-nowrap'>
-            <div className='flex items-center space-x-4 py-1'>
-              {/* 画面上部のラベル表示部分 */}
-              {selectedTag === null ? (
-                <div className='flex items-center justify-center rounded-lg bg-primary p-2 px-3'>
-                  <p className='text-xs font-semibold text-primary-foreground'>
-                    {searchParams.get('favorite') === 'true' ? 'お気に入り' : 'すべて'}
-                  </p>
-                </div>
-              ) : (
-                <div className='flex items-center justify-center rounded-lg bg-primary p-2 px-3'>
-                  <p className='text-xs font-semibold text-primary-foreground'>{getTagLabel(selectedTag)}</p>
-                </div>
-              )}
-              <Input
-                autoComplete='off'
-                className='w-64'
-                placeholder='絞り込み'
-                value={inputValue}
-                onChange={(e) => {
-                  const value = e.target.value;
-                  setInputValue(value);
-                  setFilteredItems(
-                    currentItems.filter(
-                      (item) =>
-                        item.name.toLowerCase().indexOf(value) > -1 ||
-                        item.description.toLowerCase().indexOf(value) > -1,
-                    ),
-                  );
-                }}
-              />
+    <div className='p-4'>
+      <div className='mb-4 grid grid-cols-1'>
+        <div className='flex items-center space-x-4 py-1'>
+          {/* 画面上部のラベル表示部分 */}
+          {searchParams.get('tag') ? (
+            <div className='flex items-center justify-center rounded-lg bg-primary p-2 px-3'>
+              <p className='text-xs font-semibold text-primary-foreground'>
+                {tags.find((tag) => tag.id === searchParams.get('tag'))?.name || ''}
+              </p>
             </div>
-            <ScrollBar orientation='horizontal' className='hidden' />
-          </ScrollArea>
-        </div>
-        <div className='grid flex-1 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
-          {filteredItems.map((item) => (
-            <ItemCard key={item.id} tags={tagData} item={item} />
-          ))}
+          ) : (
+            <div className='flex items-center justify-center rounded-lg bg-primary p-2 px-3'>
+              <p className='text-xs font-semibold text-primary-foreground'>
+                {searchParams.get('favorite') === 'true' ? 'お気に入り' : 'すべて'}
+              </p>
+            </div>
+          )}
+          {searchParams.get('favorite') !== 'true' && (
+            <Input
+              autoComplete='off'
+              className='max-w-64'
+              placeholder='絞り込み'
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                handleSearch(e.target.value);
+              }}
+            />
+          )}
         </div>
       </div>
-    </ScrollArea>
+      {sites.length === 0 ? (
+        <p className='m-10 text-center text-base text-muted-foreground'>サイトが見つかりませんでした🙅‍♂️</p>
+      ) : (
+        <div className='grid flex-1 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
+          {sites
+            .filter((item) => {
+              if (searchParams.get('favorite') !== 'true') return true;
+              return getAllItems()[item.id] === 'true';
+            })
+            .map((site) => (
+              <ItemCard key={site.name} site={site} />
+            ))}
+        </div>
+      )}
+    </div>
   );
 }

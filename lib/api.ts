@@ -1,24 +1,32 @@
 'server-only';
 
-import type { ItemWithTags, Tag } from '@/types/api';
-import { cache } from 'react';
+import { sites } from '@/contents/sites';
+import { tags } from '@/contents/tags';
+import type { Site } from '@/domain/site';
+import type { Tag } from '@/domain/tag';
 
-export const getItems = cache(async (): Promise<ItemWithTags[]> => {
-  const response = await fetch(`${process.env.PERSONAL_CMS_API || ''}/oretoku-sites`, { method: 'GET' });
+export const getSites = async (): Promise<Site[]> => {
+  const tags = await getTags();
 
-  if (!response.ok) {
-    throw new Error(`Failed to fetch: ${response.statusText}`);
-  }
+  return sites.map((site) => {
+    const url = new URL(site.url);
+    return {
+      id: url.hostname,
+      name: site.name,
+      description: site.description,
+      url: site.url,
+      imagePath: site.imagePath,
+      releasedAt: site.releasedAt,
+      tags: tags.filter((tag) => site.tags.some((tagId) => tag.id === tagId)),
+    };
+  });
+};
 
-  return response.json();
-});
-
-export const getTags = cache(async (): Promise<Tag[]> => {
-  const response = await fetch(`${process.env.PERSONAL_CMS_API || ''}/oretoku-tags`, { method: 'GET' });
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch: ${response.statusText}`);
-  }
-
-  return response.json();
-});
+export const getTags = async (): Promise<Tag[]> => {
+  return tags.map((tag) => ({
+    id: tag.id,
+    name: tag.name,
+    imagePath: tag.imagePath,
+    isMain: tag.isMain,
+  }));
+};

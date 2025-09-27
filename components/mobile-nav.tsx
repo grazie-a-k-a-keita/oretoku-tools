@@ -1,13 +1,11 @@
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { getTags } from '@/lib/api';
+import type { Tag } from '@/domain/tag';
 import { Menu } from 'lucide-react';
 import Image from 'next/image';
 import SideBarButton from './side-bar-button';
 
-export default async function MobileNav() {
-  const tags = await getTags();
-
+export default async function MobileNav({ tags }: { tags: Tag[] }) {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -31,7 +29,7 @@ export default async function MobileNav() {
             .filter((tag) => tag.isMain)
             .map((tag) => (
               <SheetClose asChild key={tag.id}>
-                <SideBarButton tagId={tag.id} iconUrl={tag.imageUrl} _tags={tags} />
+                <SideBarButton tag={tag} />
               </SheetClose>
             ))}
         </div>
