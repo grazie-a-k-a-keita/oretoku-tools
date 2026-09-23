@@ -266,4 +266,13 @@ export const sites: {
     releasedAt: new Date('2025-07-07'),
     tags: ['develop', 'typescript'],
   },
+  {
+    name: 'Logoipsum',
+    description:
+      'Logoipsum は、デザイン プロジェクトやモックアップで使用できる、さまざまなスタイルの SVG プレースホルダー ロゴを無料で提供します。デザイン用のロゴを簡単にコピーまたはダウンロードできます。',
+    url: 'https://logoipsum.com/',
+    imagePath: '/images/logoipsum.png',
+    releasedAt: new Date('2026-09-23'),
+    tags: ['icon'],
+  },
 ];
